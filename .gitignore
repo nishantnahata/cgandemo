@@ -1,0 +1,4 @@
+media/input_images/*
+media/output_images/*
+.idea/
+static/demo/checkpoints/*
