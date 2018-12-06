@@ -23,14 +23,14 @@ class Demo(View):
             filename = self.fs.save(image.name, image)
             url = os.path.join(MEDIA_ROOT, filename)
             input_image, output_image = self.c_gan.predict(cv2.imread(url))
-            if self.fs.exists('output_images/' + filename) is False:
-                cv2.imwrite(os.path.join(MEDIA_ROOT,
-                                         'output_images/' + filename),
-                            output_image)
-            if self.fs.exists('input_images/' + filename) is False:
-                cv2.imwrite(os.path.join(MEDIA_ROOT,
-                                         'input_images/' + filename),
-                            input_image)
+            self.fs.delete('output_images/' + filename)
+            cv2.imwrite(os.path.join(MEDIA_ROOT,
+                                     'output_images/' + filename),
+                        output_image)
+            self.fs.delete('input_images/' + filename)
+            cv2.imwrite(os.path.join(MEDIA_ROOT,
+                                     'input_images/' + filename),
+                        input_image)
             self.fs.delete(filename)
             return render(request, self.template,
                           {'output': self.fs.url('output_images/' + filename),

@@ -237,8 +237,8 @@ class C_GAN():
 
     def predict(self, input_image, validate=True):
         input_image = tf.cast(input_image, tf.float32)
-        if validate:
-            input_image, real_image = load_image(input_image)
+        if validate is True:
+            input_image = load_image(input_image)
         else:
             # Input 3 x H x W (values b/w 0 and 255)
             # Rescale and normalize input

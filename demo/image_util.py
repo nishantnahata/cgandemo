@@ -28,5 +28,5 @@ def load_image(image):
     input_image = (input_image / 127.5) - 1
     real_image = (real_image / 127.5) - 1
 
-    return input_image, real_image
+    return real_image
 
