@@ -1,27 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style>
+            .translate {
+                margin-top: -10px;
+            }
+        </style>
     </head>
     <body>
-        {% load staticfiles %}
-        <div>
-            <div>
-                <form action="" method="post" enctype="multipart/form-data">
+        {% load staticfiles static %}
+        <div class="d-flex flex-column justify-content-around">
+            <div class="jumbotron jumbotron-fluid bg-dark text-white" style="height: 25px;">
+                <h2 class="text-center">
+                    Image-to-Image Translation Using Conditional GAN
+                </h2>
+            </div>
+            <div class="translate">
+                <form class="form-inline justify-content-center" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    Image: <input type="file" name="image">
-                    <button type="submit">Upload</button>
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" name="image" />
+                    </div>
+                    <button class="btn btn-dark" type="submit">Translate</button>
                 </form>
             </div>
             {% if error is not None %}
-                <div>{{ error }}</div>
+                <div class="alert-danger">{{ error }}</div>
             {% endif %}
             {% if output is not None %}
-                <div>
-                    <img src="{{ input }}" />
-                    <img src="{{ output }}" />
+                <div class="d-flex flex-row justify-content-center">
+                    <div class="card mx-4 my-4 bg-dark text-white" style="width: 380px">
+                        <img class="card-img-top" src="{{ input }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-text">
+                                Satellite Image
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="card mx-4 my-4 bg-dark text-white" style="width: 380px">
+                        <img class="card-img-top" src="{{ output }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-text">
+                                Resulting Map image
+                            </h5>
+                        </div>
+                    </div>
                 </div>
             {% endif %}
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
 </html>

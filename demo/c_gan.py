@@ -235,7 +235,7 @@ class C_GAN():
         checkpoint.restore(checkpoint_file)
         print("restored!!", checkpoint_file)
 
-    def predict(self, input_image, validate=True):
+    def predict(self, input_image, validate=False):
         input_image = tf.cast(input_image, tf.float32)
         if validate is True:
             input_image = load_image(input_image)

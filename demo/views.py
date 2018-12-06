@@ -18,7 +18,7 @@ class Demo(View):
         return render(request, self.template)
 
     def post(self, request):
-        if request.FILES['image'] is not None:
+        try:
             image = request.FILES['image']
             filename = self.fs.save(image.name, image)
             url = os.path.join(MEDIA_ROOT, filename)
@@ -35,7 +35,6 @@ class Demo(View):
             return render(request, self.template,
                           {'output': self.fs.url('output_images/' + filename),
                            'input': self.fs.url('input_images/' + filename)})
-        else:
+        except:
             return render(request, self.template,
                           {'error': "Please check the file you uploaded!"})
-
