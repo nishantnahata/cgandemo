@@ -2,6 +2,10 @@
 This is a demo for [pix2pix Aerial-to-Map images dataset](http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/) implemented [here](https://github.com/sdnr1/c-gan_pix2pix). <br>
 The implementation of Condition GAN is based on a paper by Isola et al. Link : https://arxiv.org/abs/1611.07004
 
+## Demo
+![Example1](https://github.com/nishantcoder97/cgandemo/blob/master/screenshots/ss1.png "Example 1")
+![Example 2](https://github.com/nishantcoder97/cgandemo/blob/master/screenshots/ss2.png "Example 2")
+
 ## Requirements
 ```
 sudo apt-get install python3-pip build-essential libgtk2.0-dev
